@@ -1,7 +1,7 @@
 # Swift UI - QA
 Consist important interview Questions &amp; Answer's
 
-## 1:  SwiftUI - Automatic Accessibility Support
+## Qestion 1:  SwiftUI - Automatic Accessibility Support
 - SwiftUI provides built-in accessibility features that work automatically with minimal developer effort.
 - Unlike UIKit, where you have to manually configure accessibility for each UI element,
   SwiftUI infers accessibility traits, labels, and roles based on the view type and content.
