@@ -1,7 +1,12 @@
 # Swift UI - QA
 Consist important interview Questions &amp; Answer's
 
-## Qestion 1:  SwiftUI - Automatic Accessibility Support
+## Qestion 1: Why Swift UI uses struct for view insted of class?
+- structs are much better than classes in performance.
+- No need to worry about memory leaks & thread saftey.
+- Swift UI creates views in multiple times, & using structs helps us in managing these instances effectively.
+
+## Qestion 2:  SwiftUI - Automatic Accessibility Support
 - SwiftUI provides built-in accessibility features that work automatically with minimal developer effort.
 - Unlike UIKit, where you have to manually configure accessibility for each UI element,
   SwiftUI infers accessibility traits, labels, and roles based on the view type and content.
@@ -24,7 +29,7 @@ Consist important interview Questions &amp; Answer's
       }
       .accessibilityHint("Submits the form")
 ```
-## Qestion 2: What is an Alignment Guide in SwiftUI?
+## Qestion 3: What is an Alignment Guide in SwiftUI?
 - An alignment guide lets you customize how views line up inside a container like VStack or HStack.
 - Normally, SwiftUI aligns views using edges like .leading, .center, or .trailing. But sometimes you want more control right?
   -- like aligning the right edge of one view with the left edge of another.
