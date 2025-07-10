@@ -24,3 +24,41 @@ Consist important interview Questions &amp; Answer's
       }
       .accessibilityHint("Submits the form")
 ```
+## Qestion 2: What is an Alignment Guide in SwiftUI?
+- An alignment guide lets you customize how views line up inside a container like VStack or HStack.
+- Normally, SwiftUI aligns views using edges like .leading, .center, or .trailing. But sometimes you want more control right?
+  -- like aligning the right edge of one view with the left edge of another.
+  ### Example: Align Views to the First Text Baseline
+```swift
+struct CustomHorizontalAlignmentExample: View {
+    var body: some View {
+        VStack(alignment: .customCenter) {
+            Text("Short")
+                .alignmentGuide(.customCenter) { d in
+                    d[.leading] + 20  // Offset from leading edge
+                }
+                .background(Color.yellow)
+
+            Text("Much longer text line")
+                .alignmentGuide(.customCenter) { d in
+                    d[.leading] + 80
+                }
+                .background(Color.green)
+        }
+        .padding()
+        .border(Color.blue)
+    }
+}
+
+// MARK: - Custom Alignment Guide
+extension HorizontalAlignment {
+    private enum CustomCenterAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            d[.leading] // Default fallback
+        }
+    }
+
+    static let customCenter = HorizontalAlignment(CustomCenterAlignment.self)
+}
+
+```
