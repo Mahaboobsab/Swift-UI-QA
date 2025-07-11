@@ -65,5 +65,24 @@ extension HorizontalAlignment {
 
     static let customCenter = HorizontalAlignment(CustomCenterAlignment.self)
 }
-
 ```
+
+## Qestion 4: What is an TCA (The composable Architecture)?
+
+    - The Swift Composable Architecture (TCA) is a powerful framework developed by Point-Free (Brandon Williams and Stephen Celis).
+    - Used for building applications in a consistent, modular, and testable way across all Apple platforms.
+   
+   **TCA compontent's**
+   
+   Easy to remember - (The TCA is **SAVER's**) my Architecture
+   
+   |- **State**       ->   Hold's the App Data  
+   |- **Action**      ->  Defines user's & system event's  
+   |- **Reducer**     ->  Handles Logic & State mutations  
+   |- **Store**       ->  Connects State, action & Reducer  
+   |- **View**        ->  Swift UI view connected to the store.  
+   |- **Environment** -> API clients / Analysis.
+   
+   
+   
+  
