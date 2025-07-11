@@ -71,8 +71,8 @@ extension HorizontalAlignment {
 
 ## Qestion 4: What is an TCA (The composable Architecture)?
 
-    - The Swift Composable Architecture (TCA) is a powerful framework developed by Point-Free (Brandon Williams and Stephen Celis).
-    - Used for building applications in a consistent, modular, and testable way across all Apple platforms.
+- The Swift Composable Architecture (TCA) is a powerful framework developed by Point-Free (Brandon Williams and Stephen Celis).
+- Used for building applications in a consistent, modular, and testable way across all Apple platforms.
    
 ```swift
 import ComposableArchitecture
@@ -133,10 +133,12 @@ let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
    |- **Environment** ->  API clients / Analysis.
    
    ## Explain Reducer 
+   
    A reducer is a pure function that  
    |-> Takes current state  
    |-> Takes an action  
    |-> Returns new state  
+   
    **Example**: Vending Machine  
    State -> (snacks, drinks)  
    Action -> (Select Snacks)  
