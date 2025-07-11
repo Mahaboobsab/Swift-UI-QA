@@ -84,8 +84,12 @@ extension HorizontalAlignment {
    |- **Environment** ->  API clients / Analysis.
    
    ## Explain Reducer 
-   A reducer is a pure function that
-   |-> Takes current state
-   |-> Takes an action
-   |-> Returns new state
+   A reducer is a pure function that  
+   |-> Takes current state  
+   |-> Takes an action  
+   |-> Returns new state  
+   **Example**: Vending Machine  
+   State -> (snacks, drinks)  
+   Action -> (Select Snacks)  
+   Reducer -> (Machine provides your request & provides snacks)
   
