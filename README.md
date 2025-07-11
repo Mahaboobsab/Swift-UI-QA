@@ -76,13 +76,16 @@ extension HorizontalAlignment {
    
    Easy to remember - (The TCA is **SAVER's**) my Architecture
    
-   |- **State**       ->   Hold's the App Data  
+   |- **State**       ->  Hold's the App Data  
    |- **Action**      ->  Defines user's & system event's  
    |- **Reducer**     ->  Handles Logic & State mutations  
    |- **Store**       ->  Connects State, action & Reducer  
    |- **View**        ->  Swift UI view connected to the store.  
-   |- **Environment** -> API clients / Analysis.
+   |- **Environment** ->  API clients / Analysis.
    
-   
-   
+   ## Explain Reducer 
+   A reducer is a pure function that
+   |-> Takes current state
+   |-> Takes an action
+   |-> Returns new state
   
