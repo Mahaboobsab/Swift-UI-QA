@@ -119,6 +119,14 @@ let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
         return .none
     }
 }
+
+//MARK: Store
+import ComposableArchitecture
+
+let store = Store(initialState: CounterFeature.State()) {
+    CounterFeature()
+}
+
 ```
    
    **TCA compontent's**
