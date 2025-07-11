@@ -120,13 +120,33 @@ let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
     }
 }
 
-//MARK: Store
+//MARK:- Store
 import ComposableArchitecture
 
 let store = Store(initialState: CounterFeature.State()) {
     CounterFeature()
 }
 
+//MARK:- Dependency
+import Foundation
+import ComposableArchitecture
+
+struct UUIDGenerator {
+    var generate: () -> UUID
+}
+
+extension DependencyValues {
+    var uuidGenerator: UUIDGenerator {
+        get { self[UUIDGeneratorKey.self] }
+        set { self[UUIDGeneratorKey.self] = newValue }
+    }
+
+    private enum UUIDGeneratorKey: DependencyKey {
+        static let liveValue = UUIDGenerator {
+            UUID()
+        }
+    }
+}
 ```
    
    **TCA compontent's**
@@ -138,7 +158,8 @@ let store = Store(initialState: CounterFeature.State()) {
    |- **Reducer**     ->  Handles Logic & State mutations  
    |- **Store**       ->  Connects State, action & Reducer  
    |- **View**        ->  Swift UI view connected to the store.  
-   |- **Environment** ->  API clients / Analysis.
+   |- **Environment** ->  API clients / Analysis.  
+   |- **Dependency** -> Environment has largely been replaced by Dependency in the latest versions of the Swift Composable Architecture (TCA).
    
    ## Explain Reducer 
    
@@ -151,4 +172,5 @@ let store = Store(initialState: CounterFeature.State()) {
    State -> (snacks, drinks)  
    Action -> (Select Snacks)  
    Reducer -> (Machine provides your request & provides snacks)
+  
   
