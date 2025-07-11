@@ -169,8 +169,22 @@ extension DependencyValues {
    |-> Returns new state  
    
    **Example**: Vending Machine  
+   
    State -> (snacks, drinks)  
    Action -> (Select Snacks)  
-   Reducer -> (Machine provides your request & provides snacks)
+   Reducer -> (Machine provides your request & provides snacks)  
+   
+   **Example**: Dependency
+   ```swift
+@Dependency(\.apiClient) var apiClient
+```
+  
+  If your feature is a game character:
+
+  **State** is your health and score.  
+  **Action** is what you do (jump, run).  
+  **Dependency** is your tools (sword, shield, map).  
+  You don’t carry all tools inside you—you ask for them when needed.  
+  
   
   
