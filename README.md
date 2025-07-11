@@ -65,12 +65,61 @@ extension HorizontalAlignment {
 
     static let customCenter = HorizontalAlignment(CustomCenterAlignment.self)
 }
+
 ```
+
 
 ## Qestion 4: What is an TCA (The composable Architecture)?
 
     - The Swift Composable Architecture (TCA) is a powerful framework developed by Point-Free (Brandon Williams and Stephen Celis).
     - Used for building applications in a consistent, modular, and testable way across all Apple platforms.
+   
+```swift
+import ComposableArchitecture
+
+// MARK: - State
+struct AppState: Equatable {
+    var count: Int = 0
+    var isLoading: Bool = false
+    var errorMessage: String? = nil
+}
+
+// MARK: - Action
+enum AppAction: Equatable {
+    case increment
+    case decrement
+    case fetchData
+    case fetchDataSuccess(String) // Example data type
+    case fetchDataFailure(String) // Error message
+}
+
+// MARK: - Reducer
+let appReducer = Reducer<AppState, AppAction, Void> { state, action, _ in
+    switch action {
+    case .increment:
+        state.count += 1
+        return .none
+
+    case .decrement:
+        state.count -= 1
+        return .none
+
+    case .fetchData:
+        state.isLoading = true
+        state.errorMessage = nil
+        return .none // Replace with actual effect if needed
+    case .fetchDataSuccess(let data):
+        state.isLoading = false
+        // Handle data (e.g., update state with it)
+        return .none
+
+    case .fetchDataFailure(let error):
+        state.isLoading = false
+        state.errorMessage = error
+        return .none
+    }
+}
+```
    
    **TCA compontent's**
    
