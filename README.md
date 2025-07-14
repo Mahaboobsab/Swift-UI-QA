@@ -81,6 +81,36 @@ Handle edge cases where default alignment fails.
 
 
   ### Example:
+  ```swift
+struct ContentView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("A")
+                .background(Color.green)
+
+            Text("B")
+                .alignmentGuide(.leading) { _ in -20 }
+                .background(Color.blue)
+        }
+        .border(Color.red)
+    }
+}
+  ```
+  **🔍 What’s Happening?**  
+  
+  - VStack(alignment: .leading) normally aligns both texts to the left.  
+  
+  - We override the second Text("B")'s leading alignment by pulling it 20 points to the left with
+    ```swift
+    .alignmentGuide(.leading) { _ in -20 }.
+    ```  
+  
+  - You’ll see "B" slightly indented left compared to "A"—like it's nudging out of the border.  
+
+  <img width="300" height="600" alt="Simulator Screen Shot - iPhone 14 Pro - 2025-07-14 at 22 38 05" src="https://github.com/user-attachments/assets/861e38d6-6adf-4a5f-9c92-6f91faeed94f" />  
+  
+
+
 ```swift
 struct ContentView: View {
     var body: some View {
