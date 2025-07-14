@@ -80,7 +80,7 @@ Create polished, professional UI layouts.
 Handle edge cases where default alignment fails.  
 
 
-  ### Example: Align Views to the First Text Baseline
+  ### Example:
 ```swift
 struct ContentView: View {
     var body: some View {
