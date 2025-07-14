@@ -82,38 +82,24 @@ Handle edge cases where default alignment fails.
 
   ### Example: Align Views to the First Text Baseline
 ```swift
-struct CustomHorizontalAlignmentExample: View {
+struct ContentView: View {
     var body: some View {
-        VStack(alignment: .customCenter) {
-            Text("Short")
-                .alignmentGuide(.customCenter) { d in
-                    d[.leading] + 20  // Offset from leading edge
-                }
-                .background(Color.yellow)
-
-            Text("Much longer text line")
-                .alignmentGuide(.customCenter) { d in
-                    d[.leading] + 80
-                }
-                .background(Color.green)
+        VStack(alignment: .leading) {
+            ForEach(0..<10) { position in
+                Text("Number \(position)")
+                    .alignmentGuide(.leading) { _ in
+                        Double(position) * -10
+                    }
+            }
         }
-        .padding()
-        .border(Color.blue)
+        .background(.red)
+        .frame(width: 400, height: 400)
+        .background(.blue)
     }
-}
-
-// MARK: - Custom Alignment Guide
-extension HorizontalAlignment {
-    private enum CustomCenterAlignment: AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            d[.leading] // Default fallback
-        }
-    }
-
-    static let customCenter = HorizontalAlignment(CustomCenterAlignment.self)
 }
 
 ```
+<img width="283" height="556" alt="Screenshot 2025-07-14 at 9 43 12 PM" src="https://github.com/user-attachments/assets/99851693-bd0f-419f-b76b-e687b34ddd7f" />
 
 
 ## Qestion 4: What is an TCA (The composable Architecture)?
