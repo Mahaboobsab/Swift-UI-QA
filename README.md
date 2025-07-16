@@ -260,5 +260,15 @@ extension DependencyValues {
 
 - AssociatedTypes is a part of the mechanisms for using generics in protocols.
 -  SwiftUI view is making heavy use of generics and associatedTypes. 
-- SwiftUI uses the associatedType in View protocol, where the body property returns an associatedType of View, meaning View can be any type of View like HStack, ZStack, or ListView. 
+- SwiftUI uses the associatedType in View protocol, where the body property returns an associatedType of View, meaning View can be any type of View like HStack, ZStack, or ListView.
+  
+## Question 8: How do you identify performance issues in swiftUI? 
+
+    1. Use Instruments (Xcode Tool) 
+    2. SwiftUI Performance Template: Use this in Instruments to track rendering, layout, and view updates. 
+    3. Time Profiler: Helps identify slow functions or excessive recomputation. 
+    4. Memory Graph: Detect memory leaks or retain cycles. 
+
+     
+  
   
