@@ -248,6 +248,13 @@ extension DependencyValues {
   **Action** is what you do (jump, run).  
   **Dependency** is your tools (sword, shield, map).  
   You don’t carry all tools inside you—you ask for them when needed.  
+
+## Question 6: Does SwiftUI ViewModifiers order affect the results? 
+
+- Yes, The below image showing how the order of SwiftUI ViewModifiers affects the result. 
+- In short: 
+- .background(Color.red).padding() → background is tight around the text. 
+- .padding().background(Color.red) → background wraps the padded area.
   
   
   
