@@ -249,26 +249,35 @@ extension DependencyValues {
   **Dependency** is your tools (sword, shield, map).  
   You don’t carry all tools inside you—you ask for them when needed.  
 
-## Question 6: Does SwiftUI ViewModifiers order affect the results? 
+## Question 5: Does SwiftUI ViewModifiers order affect the results? 
 
 - Yes, The below image showing how the order of SwiftUI ViewModifiers affects the result. 
 - In short: 
 - .background(Color.red).padding() → background is tight around the text. 
 - .padding().background(Color.red) → background wraps the padded area.
 
-## Question 7: What is associatedType and how does SwiftUI use it? 
+## Question 6: What is associatedType and how does SwiftUI use it? 
 
 - AssociatedTypes is a part of the mechanisms for using generics in protocols.
 -  SwiftUI view is making heavy use of generics and associatedTypes. 
 - SwiftUI uses the associatedType in View protocol, where the body property returns an associatedType of View, meaning View can be any type of View like HStack, ZStack, or ListView.
   
-## Question 8: How do you identify performance issues in swiftUI? 
+## Question 7: How do you identify performance issues in swiftUI? 
 
     1. Use Instruments (Xcode Tool) 
     2. SwiftUI Performance Template: Use this in Instruments to track rendering, layout, and view updates. 
     3. Time Profiler: Helps identify slow functions or excessive recomputation. 
     4. Memory Graph: Detect memory leaks or retain cycles. 
 
-     
-  
+## Question 8: How to debug a SwiftUI view? 
+
+	- We use the _printChanges() method to detect changes in a View.
+  - Additionally, we can capture the view hierarchy for inspecting the layout or getting more information about the view.
+
+🔍 What Does _printChanges() Do? 
+
+- When you call _printChanges() inside a SwiftUI view, it prints to the console which views are being recomputed due to state changes. This is incredibly useful for: 
+- Identifying unnecessary view updates 
+- Debugging performance issues 
+- Understanding how state affects rendering 
   
