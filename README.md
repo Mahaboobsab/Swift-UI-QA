@@ -255,6 +255,10 @@ extension DependencyValues {
 - In short: 
 - .background(Color.red).padding() → background is tight around the text. 
 - .padding().background(Color.red) → background wraps the padded area.
-  
-  
+
+## Question 7: What is associatedType and how does SwiftUI use it? 
+
+- AssociatedTypes is a part of the mechanisms for using generics in protocols.
+-  SwiftUI view is making heavy use of generics and associatedTypes. 
+- SwiftUI uses the associatedType in View protocol, where the body property returns an associatedType of View, meaning View can be any type of View like HStack, ZStack, or ListView. 
   
