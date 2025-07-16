@@ -279,5 +279,9 @@ extension DependencyValues {
 - When you call _printChanges() inside a SwiftUI view, it prints to the console which views are being recomputed due to state changes. This is incredibly useful for: 
 - Identifying unnecessary view updates 
 - Debugging performance issues 
-- Understanding how state affects rendering 
+- Understanding how state affects rendering
+
+## Question 9: How to use gestures in swiftUI? 
+- In SwiftUI, gestures are a powerful way to add interactivity to your views. 
+- You can use built-in gesture modifiers to detect taps, drags, long presses, magnification (pinch), rotation, and more. Here's a quick overview of how to use gestures in SwiftUI 
   
