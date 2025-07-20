@@ -283,5 +283,10 @@ extension DependencyValues {
 
 ## Question 9: How to use gestures in swiftUI? 
 - In SwiftUI, gestures are a powerful way to add interactivity to your views. 
-- You can use built-in gesture modifiers to detect taps, drags, long presses, magnification (pinch), rotation, and more. Here's a quick overview of how to use gestures in SwiftUI 
+- You can use built-in gesture modifiers to detect taps, drags, long presses, magnification (pinch), rotation, and more. Here's a quick overview of how to use gestures in SwiftUI
+
+## Question 10: What is the difference between Appstorage & Userdefaults?
+
+<img width="816" height="338" alt="Screenshot 2025-07-20 at 8 08 02 PM" src="https://github.com/user-attachments/assets/be6e456c-8fbc-4639-a374-7760d8137d21" />
+ 
   
