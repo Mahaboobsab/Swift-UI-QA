@@ -314,5 +314,26 @@ Data source --> [Operator] --> [Operator] --> ... --> [Subscriber]
 
 **Subscriber**: receives the final output (e.g. via .sink, .assign)  
 
+**🧪 Simple Code Example**  
+
+```swift
+
+Just(10)
+    .map { $0 * 2 }        // Doubles it
+    .filter { $0 > 15 }    // Filters if > 15
+    .sink { value in
+        print("Final value: \(value)")
+    }
+```
+**Step-by-step:**  
+
+- Just(10) emits 10  
+- .map turns it into 20  
+- .filter passes it through (because 20 > 15)  
+- .sink receives and prints Final value: 20  
+
+💬 If you change the Just to Just(5), the filter will block it, and nothing is printed.  
+
+
 
 
