@@ -342,7 +342,19 @@ A **Publisher** is like a faucet streaming data.
 
 
 That’s what “a data stream with operators” means:  
-**🔁 A flow of values + modifiers = a reactive pipeline.**
+**🔁 A flow of values + modifiers = a reactive pipeline.**  
+
+**🧠 What Are Combine Operators?**  
+Combine operators are methods like:  
+
+- .map
+- .filter
+- .combineLatest
+- .flatMap
+- .debounce
+- .removeDuplicates
+- .sink
+- .assign
 
 
 
