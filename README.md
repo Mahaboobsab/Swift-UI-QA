@@ -443,5 +443,61 @@ NotificationCenter**
 **CurrentValueSubject as Subscriber**  
 → Subscribes and holds the latest value, re-emitting it to new subscribers.  
 
+**✅ Quick Strategy to Remember Publishers & Subscribers for Interviews**  
+
+**🔹 Focus on Most Commonly Asked Ones**  
+
+**Publishers (Top 6 to Remember):**  
+
+
+**Just** – Emits one value and completes.  
+**Empty** – Emits nothing and completes.  
+**Fail** – Emits an error and terminates.  
+**PassthroughSubject** – Emits values dynamically.  
+**CurrentValueSubject** – Holds and emits the latest value.  
+**Timer / NotificationCenter** – Emits values based on time or system events.  
+
+
+**Subscribers (Top 3 to Remember):**  
+
+**sink** – Handles values and completion.  
+**assign** – Assigns values to object properties.  
+**Custom Subscriber** – For advanced control (mention only if asked).  
+
+# Combine Publishers and Subscribers
+
+## 📦 Publishers
+
+| Publisher | Description |
+|-----------|-------------|
+| Just | Emits a single value and then completes immediately. |
+| Empty | Emits no values and completes instantly. |
+| Fail | Emits an error and terminates the stream. |
+| Deferred | Creates a publisher only when a subscriber subscribes. |
+| Future | Emits a single value asynchronously and then completes. |
+| PassthroughSubject | Emits values to subscribers dynamically without storing them. |
+| CurrentValueSubject | Emits current and future values, always holding the latest value. |
+| Timer.publish | Emits values at regular time intervals like a ticking clock. |
+| NotificationCenter.publisher | Emits values when a specific system or custom notification is posted. |
+| URLSession.DataTaskPublisher | Emits data and response from a network request. |
+| Publishers.Sequence | Emits values from a sequence like an array, then completes. |
+| Publishers.Merge | Combines multiple publishers of the same type into one stream. |
+| Publishers.CombineLatest | Emits combined latest values from multiple publishers when any emits. |
+| Publishers.Zip | Emits paired values from multiple publishers only when all emit. |
+| Publishers.Share | Shares a single subscription among multiple subscribers. |
+| Publishers.Multicast | Allows multiple subscribers to share a single upstream subscription using a subject. |
+| Custom Publisher | Emit values with custom logic by conforming to the Publisher protocol. |
+
+## 📬 Subscribers
+
+| Subscriber | Description |
+|------------|-------------|
+| sink(receiveValue:) | Subscribes to receive only values from a publisher. |
+| sink(receiveCompletion:receiveValue:) | Subscribes to receive both values and completion events. |
+| assign(to:on:) | Automatically assigns received values to a property of an object. |
+| Custom Subscriber | Full control subscriber by conforming to the Subscriber protocol. |
+| PassthroughSubject as Subscriber | Can subscribe to another publisher and re-emit values. |
+| CurrentValueSubject as Subscriber | Subscribes and holds the latest value, re-emitting it to new subscribers. |
+
 
 
