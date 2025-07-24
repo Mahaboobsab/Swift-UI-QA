@@ -289,4 +289,30 @@ extension DependencyValues {
 
 <img width="816" height="338" alt="Screenshot 2025-07-20 at 8 08 02 PM" src="https://github.com/user-attachments/assets/be6e456c-8fbc-4639-a374-7760d8137d21" />
  
-  
+## Question 11: Explain Combine Publishers?  
+
+🚀**What is a Publisher?**  
+
+A Publisher is a type in Combine that delivers a sequence of values over time to one or more Subscribers.  
+You can think of it like a data stream with operators.  
+
+**💡 What Does “A Data Stream with Operators” Mean?**  
+
+In Combine, a Publisher sends a stream of values over time — like a river flowing with data.  
+You can attach operators (like .map, .filter, .debounce, etc.) to that stream to modify it before it reaches the final destination, called the Subscriber.  
+Data source --> [Operator] --> [Operator] --> ... --> [Subscriber]  
+
+        |            |              |  
+	
+   Publisher  	     map       	    filter  
+
+**Each part of the pipeline:**  
+
+**Publisher**: starts the stream (e.g. Just, Future, Timer)  
+
+**Operators**: modify/transform the stream (e.g. .map, .filter, .combineLatest)  
+
+**Subscriber**: receives the final output (e.g. via .sink, .assign)  
+
+
+
