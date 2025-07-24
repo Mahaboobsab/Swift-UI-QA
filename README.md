@@ -334,11 +334,12 @@ Just(10)
 
 💬 If you change the Just to Just(5), the filter will block it, and nothing is printed.  
 
-**✅ Summary**  
+**🔹 Visual Analogy**  
+Imagine a water pipeline:  
 
-A **Publisher** is like a faucet streaming data.  
-**Operators** are tools that transform or filter that data.  
-**Subscribers** drink the final result.  
+**Publisher** = Faucet (source of water)  
+**Operators** = Filters or mixers  
+**Subscriber** = Bucket collecting water  
 
 
 That’s what “a data stream with operators” means:  
@@ -356,6 +357,18 @@ Combine operators are methods like:
 - .sink
 - .assign
 
+**Type of publishers**
+
+**📦 JEF-DPC-TN**  
+
+Just  
+Empty  
+Fail  
+Deferred  
+PassthroughSubject  
+CurrentValueSubject  
+Timer  
+NotificationCenter  
 
 
 
