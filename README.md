@@ -304,7 +304,7 @@ Data source --> [Operator] --> [Operator] --> ... --> [Subscriber]
 
         |            |              |  
 	
-   Publisher  	     map       	    filter  
+   Publisher ---------  map ---------- filter  
 
 **Each part of the pipeline:**  
 
@@ -333,6 +333,16 @@ Just(10)
 - .sink receives and prints Final value: 20  
 
 💬 If you change the Just to Just(5), the filter will block it, and nothing is printed.  
+
+**✅ Summary**  
+
+A **Publisher** is like a faucet streaming data.  
+**Operators** are tools that transform or filter that data.  
+**Subscribers** drink the final result.  
+
+
+That’s what “a data stream with operators” means:  
+**🔁 A flow of values + modifiers = a reactive pipeline.**
 
 
 
