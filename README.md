@@ -499,5 +499,74 @@ NotificationCenter**
 | PassthroughSubject as Subscriber | Can subscribe to another publisher and re-emit values. |
 | CurrentValueSubject as Subscriber | Subscribes and holds the latest value, re-emitting it to new subscribers. |
 
+## Question 12: What are the new components introduced in SwiftUI over UIKit?  
 
+# New Components in SwiftUI Compared to UIKit
+
+SwiftUI introduces several new components and concepts that differ significantly from UIKit. Here's a comprehensive list:
+
+---
+
+## 🆕 New Components in SwiftUI
+
+### 1. `VStack`, `HStack`, `ZStack`
+- **Description**: Declarative layout containers for vertical, horizontal, and overlapping views.
+- **UIKit Equivalent**: `UIStackView` (less flexible and more verbose).
+
+### 2. `LazyVStack`, `LazyHStack`, `LazyVGrid`, `LazyHGrid`
+- **Description**: Efficient rendering for large datasets with lazy loading.
+- **UIKit Equivalent**: `UICollectionView` (requires delegates and data sources).
+
+### 3. `Grid`, `GridRow`
+- **Description**: Structured layout introduced in iOS 16.
+- **UIKit Equivalent**: No direct equivalent; requires nested stack views or collection views.
+
+### 4. `List`
+- **Description**: Simplified list view with built-in support for swipe actions, drag-and-drop, and sections.
+- **UIKit Equivalent**: `UITableView` (requires manual setup).
+
+### 5. `Form`
+- **Description**: Automatically styled container for input fields.
+- **UIKit Equivalent**: Custom `UITableView` or manual layout.
+
+### 6. `NavigationStack`, `NavigationSplitView`
+- **Description**: Improved navigation model with deep linking and programmatic navigation.
+- **UIKit Equivalent**: `UINavigationController`.
+
+### 7. `DisclosureGroup`
+- **Description**: Expandable/collapsible sections.
+- **UIKit Equivalent**: Custom views or table view sections.
+
+### 8. `Gauge`
+- **Description**: Visual representation of progress or values.
+- **UIKit Equivalent**: Requires custom drawing.
+
+### 9. `Chart`
+- **Description**: Built-in charting support (bar, line, pie, etc.) from iOS 16.
+- **UIKit Equivalent**: Requires third-party libraries or custom drawing.
+
+### 10. `TimelineView`
+- **Description**: Time-based updates for views (e.g., clocks).
+- **UIKit Equivalent**: `CADisplayLink` or timers.
+
+### 11. `Canvas`
+- **Description**: Custom drawing using SwiftUI's declarative syntax.
+- **UIKit Equivalent**: `CoreGraphics` or `UIView.draw(_:)`.
+
+### 12. `ScenePhase`
+- **Description**: Tracks app lifecycle events using `@Environment`.
+- **UIKit Equivalent**: `UIApplicationDelegate`.
+
+---
+
+## 🧠 Conceptual Differences
+
+- **Declarative UI**: Describe what the UI should look like, not how to build it.
+- **State-driven**: UI updates automatically with `@State`, `@Binding`, `@ObservedObject`.
+- **Modifiers**: Styling and behavior applied using chained modifiers.
+- **Preview Support**: Live previews in Xcode without running the app.
+
+---
+
+SwiftUI simplifies UI development by reducing boilerplate and making layouts more intuitive and adaptive.
 
