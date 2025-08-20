@@ -568,5 +568,83 @@ SwiftUI introduces several new components and concepts that differ significantly
 
 ---
 
-SwiftUI simplifies UI development by reducing boilerplate and making layouts more intuitive and adaptive.
+SwiftUI simplifies UI development by reducing boilerplate and making layouts more intuitive and adaptive.  
+
+## Question 13: What is Boxed type?  
+
+**✅ Definition:**  
+
+A boxed type is a reference type (usually a class) that wraps a value type (like a struct or enum) to give it reference semantics.
+A boxed type is used when you want a value type (like a struct) to behave like a reference type (like a class).  
+
+**This means:** 
+
+- Instead of copying the value every time you pass it around (which is what structs normally do),
+- You wrap it in a class (the "box") so that multiple variables can point to the same instance and see the same changes.
+
+**🧠 Simple Analogy:**  
+
+- **Value type** = photocopy (each copy is independent).  
+- **Boxed type** = shared Google Doc (everyone sees updates).
+
+```swift
+struct User {
+    var name: String
+}
+
+final class Box<T> {
+    var value: T
+    init(_ value: T) {
+        self.value = value
+    }
+}
+
+let userBox = Box(User(name: "Mahaboobsab"))
+let anotherRef = userBox
+anotherRef.value.name = "Nadaf"
+
+print(userBox.value.name) // Output: "Nadaf"
+```
+
+**🟦 1. Boxed Type in SwiftUI**  
+
+SwiftUI prefers value types like @State, @Binding, and @ObservedObject, but sometimes you need to share mutable state across views.
+Here's where a boxed type (usually a class) helps.  
+
+```swift
+struct User {
+    var name: String
+}
+
+final class UserBox: ObservableObject {
+    @Published var user: User
+    init(user: User) {
+        self.user = user
+    }
+}
+
+struct ParentView: View {
+    @StateObject private var userBox = UserBox(user: User(name: "Mahaboobsab"))
+
+    var body: some View {
+        VStack {
+            Text("Name: \(userBox.user.name)")
+            ChildView(userBox: userBox)
+        }
+    }
+}
+
+struct ChildView: View {
+    @ObservedObject var userBox: UserBox
+
+    var body: some View {
+        Button("Change Name") {
+            userBox.user.name = "Nadaf"
+        }
+    }
+}
+
+```
+
+
 
