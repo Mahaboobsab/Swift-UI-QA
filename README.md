@@ -608,7 +608,7 @@ print(userBox.value.name) // Output: "Nadaf"
 
 **🟦 1. Boxed Type in SwiftUI**  
 
-SwiftUI prefers value types like @State, @Binding, and @ObservedObject, but sometimes you need to share mutable state across views.
+SwiftUI prefers value types like **@State, @Binding, and @ObservedObject**, but sometimes you need to share mutable state across views.
 Here's where a boxed type (usually a class) helps.  
 
 ```swift
@@ -643,8 +643,31 @@ struct ChildView: View {
         }
     }
 }
-
 ```
+
+## Question 14: SwiftUI 🆚 Combine?  
+
+**✅ What is SwiftUI?**  
+
+- SwiftUI is Apple’s declarative UI framework for building user interfaces across all Apple platforms.
+- Introduced in iOS 13, it replaces UIKit for modern UI development.
+- Uses state-driven rendering: UI updates automatically when data changes.
+  
+**✅ What is Combine?**  
+
+- Combine is Apple’s reactive programming framework for handling asynchronous events and data streams.
+- Also introduced in iOS 13.
+- Provides Publishers, Subscribers, and Operators to manage data flow.
+
+|Feature|SwiftUI|Combine|
+|-------|-------|-------|
+|Purpose|UI rendering|Data flow & event handling|
+|Type|UI framework|Reactive framework|
+|Core Concept|Declarative views|Publishers & Subscribers|
+|State Management|@State, @Binding, @ObservedObject, @EnvironmentObject|	@Published, ObservableObject, AnyPublisher|
+|UI Role|Builds and updates views|	Drives data changes that trigger UI updates|
+|Example Use|Displaying a list of users|	Fetching users from a network and updating the list|
+|Integration|Works seamlessly with Combine|	Often used to power SwiftUI views|
 
 
 
