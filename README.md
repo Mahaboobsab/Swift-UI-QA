@@ -670,4 +670,75 @@ struct ChildView: View {
 |Integration|Works seamlessly with Combine|	Often used to power SwiftUI views|
 
 
+## Swift Opaque Types – Interview Questions & Answers
+
+### 🔹 1. What is an opaque type in Swift? How is it different from a protocol type?
+**Answer:**
+An opaque type in Swift is declared using the `some` keyword and allows a function to return a value that conforms to a protocol without revealing its concrete type. Unlike protocol types (`PaymentMethod`), opaque types preserve the underlying type information, enabling better performance and compile-time type safety.
+
+```swift
+func getPaymentHandler() -> some PaymentMethod {
+    return CreditCardPayment()
+}
+```
+
+### 🔹 2. Can you return different types from a function that uses `some Protocol`?
+**Answer:**
+No. A function using `some Protocol` must always return the **same concrete type**. Returning different types conditionally will result in a compile-time error.
+
+```swift
+func getPaymentHandler(type: String) -> some PaymentMethod {
+    if type == "credit" {
+        return CreditCardPayment() // ✅
+    } else {
+        return UpiPayment() // ❌ Error: different concrete type
+    }
+}
+```
+
+### 🔹 3. How are opaque types used in SwiftUI?
+**Answer:**
+SwiftUI uses opaque types extensively to return views from functions while hiding the actual view type. This allows for flexibility and optimization.
+
+```swift
+func paymentButton(title: String) -> some View {
+    Button(title) {
+        print("Payment initiated")
+    }
+}
+```
+
+### 🔹 4. Give a real-world example where opaque types are beneficial in a payment module.
+**Answer:**
+In a payment module, you might want to return a payment handler that conforms to a `PaymentMethod` protocol but hide the actual implementation to enforce encapsulation and allow internal changes without affecting external code.
+
+```swift
+protocol PaymentMethod {
+    func pay(amount: Double) -> String
+}
+
+struct CreditCardPayment: PaymentMethod { /* ... */ }
+
+func getCreditCardHandler() -> some PaymentMethod {
+    return CreditCardPayment()
+}
+```
+
+### 🔹 5. What are the limitations of using opaque types?
+**Answer:**
+- You can’t return multiple concrete types.
+- You can’t use opaque types in stored properties unless the type is fully known.
+- You lose flexibility compared to protocol types.
+
+### 🔹 6. When would you prefer protocol types over opaque types?
+**Answer:**
+Use protocol types when:
+- You need to return **multiple types** conforming to the same protocol.
+- You want to store heterogeneous types in collections.
+- You need **runtime polymorphism**.
+
+Use opaque types when:
+- You want to **hide implementation details**.
+- You need **compile-time type safety**.
+- You want **better performance**.
 
