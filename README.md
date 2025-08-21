@@ -694,6 +694,21 @@ func getPaymentHandler(type: String) -> some PaymentMethod {
         return UpiPayment() // ❌ Error: different concrete type
     }
 }
+
+func getPaymentMethod(type: String) -> some PaymentMethod {
+    switch type {
+    case "credit":
+        return CreditCardPayment()
+    case "upi":
+        return UpiPayment()
+    default:
+        return WalletPayment()
+    }
+}
+/*
+⚠️ This will cause a compile-time error because some PaymentMethod requires returning only one concrete type.
+ To fix this, you must return a single type or use type erasure or protocol types (PaymentMethod) instead.
+*/
 ```
 
 ### 🔹 3. How are opaque types used in SwiftUI?
