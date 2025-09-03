@@ -757,3 +757,32 @@ Use opaque types when:
 - You need **compile-time type safety**.
 - You want **better performance**.
 
+
+## Question 15: What is @ViewBuilder in SwiftUI, and why would you use it?  
+
+- **@ViewBuilder** is a result builder provided by SwiftUI.
+
+- It allows a function or closure to return multiple views conditionally without wrapping them in a container like VStack or Group.
+
+- SwiftUI normally expects exactly one view from a function returning some View. Using @ViewBuilder lets you combine multiple views into a single some View seamlessly.
+
+**Common use cases:**
+
+- Returning different views based on conditions or switch statements.
+
+- Building small reusable view functions that compose multiple child views.
+
+**Example**:  
+```swift
+@ViewBuilder
+func destinationView(for title: String) -> some View {
+    switch title {
+    case "Dashboard":
+        DashboardView()
+    case "Families":
+        FamilyListView()
+    default:
+        Text("\(title) Screen")
+    }
+}
+```
