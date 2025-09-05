@@ -786,3 +786,80 @@ func destinationView(for title: String) -> some View {
     }
 }
 ```
+## Question 16: What is the difference between @StateObject and @ObservedObject?  
+
+The difference between @StateObject and @ObservedObject in SwiftUI comes down to ownership and lifecycle management of your observable view model.  
+<img width="750" height="261" alt="Screenshot 2025-09-05 at 3 35 01 PM" src="https://github.com/user-attachments/assets/177423a9-76a0-4163-9140-8c269d819e63" />  
+
+**Example**: 
+
+```swift
+import SwiftUI
+
+final class CounterViewModel: ObservableObject {
+    @Published var count = 0
+
+    func increment() {
+        count += 1
+    }
+
+    func decrement() {
+        count -= 1
+    }
+}
+struct CounterStateObjectView: View {
+    @StateObject private var viewModel = CounterViewModel()
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("StateObject Count: \(viewModel.count)")
+                .font(.title)
+
+            HStack {
+                Button("-") { viewModel.decrement() }
+                Button("+") { viewModel.increment() }
+            }
+            .font(.largeTitle)
+        }
+        .padding()
+    }
+}
+
+struct CounterObservedObjectView: View {
+    @ObservedObject var viewModel: CounterViewModel
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("ObservedObject Count: \(viewModel.count)")
+                .font(.title)
+
+            HStack {
+                Button("-") { viewModel.decrement() }
+                Button("+") { viewModel.increment() }
+            }
+            .font(.largeTitle)
+        }
+        .padding()
+    }
+}
+struct ContentView: View {
+    @StateObject private var sharedViewModel = CounterViewModel()
+
+    var body: some View {
+        VStack(spacing: 40) {
+            CounterStateObjectView() // Owns its own view model
+            Divider()
+            CounterObservedObjectView(viewModel: sharedViewModel) // Shares external view model
+        }
+        .padding()
+    }
+}
+
+
+#Preview {
+    ContentView()
+}
+```
+
+
+
