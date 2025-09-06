@@ -860,6 +860,90 @@ struct ContentView: View {
     ContentView()
 }
 ```
+## Question 17: 🧭 What Is NavigationPath?  
+
+NavigationPath is a type-erased collection that stores the state of the navigation stack.  
+It lets you push and pop views dynamically, and even serialize the stack for persistence.  
+<img width="739" height="314" alt="Screenshot 2025-09-06 at 11 06 21 PM" src="https://github.com/user-attachments/assets/810ff559-03d4-4366-b230-037c86fd57bc" />  
+
+**🧱 Why Use It?**
+- Dynamic Routing: Push views based on user actions or data.
+
+- Type-Erased Flexibility: Store heterogeneous types in the stack.
+
+- State Persistence: Save and restore navigation state using .codable.
+
+```swift
+
+// MARK:- OLD
+
+struct ContentView: View {
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 30) {
+                NavigationLink("Go to Mahaboobsab's Profile") {
+                    DetailView(username: "Mahaboobsab")
+                }
+
+                NavigationLink("Go to Rasool's Profile") {
+                    DetailView(username: "Rasool")
+                }
+            }
+            .navigationTitle("Home")
+        }
+    }
+}
+
+
+// MARK:- NEW
+struct ContentView: View {
+    @State private var path = NavigationPath()
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            VStack(spacing: 30) {
+                Button("Go to Mahaboobsab's Profile") {
+                    path.append(101) // Example user ID
+                }
+
+                Button("Go to Rasool's Profile") {
+                    path.append(202) // Another user ID
+                }
+            }
+            .navigationTitle("Home")
+            .navigationDestination(for: Int.self) { userID in
+                DetailView(username: userID)
+            }
+        }
+    }
+}
+
+//or
+
+struct MainView: View {
+    @State private var path = NavigationPath()
+
+    var body: some View {
+        NavigationStack(path: $path) {
+            VStack(spacing: 30) {
+                Button("Go to Mahaboobsab's Profile") {
+                    path.append("Mahaboobsab")
+                }
+
+                Button("Go to Rasool's Profile") {
+                    path.append("Rasool")
+                }
+            }
+            .navigationTitle("Home")
+            .navigationDestination(for: String.self) { username in
+                DetailView(username: username)
+            }
+        }
+    }
+}
+```
+
+
 
 
 
