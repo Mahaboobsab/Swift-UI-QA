@@ -1,6 +1,19 @@
 # Swift UI - QA
 Consist important interview Questions &amp; Answer's
 
+📌 Examples of Evolution
+
+iOS 13 → Core SwiftUI (basic views like Text, Button, List, NavigationView, Form, Bindings, ObservableObject).
+
+iOS 14 → LazyVGrid, LazyHGrid, ProgressView, ColorPicker, Link, better List APIs, App protocol (new lifecycle).
+
+iOS 15 → AsyncImage, .refreshable, Markdown in Text, better List swipe actions.
+
+iOS 16 → Grid, NavigationStack, Charts, ShareLink, more modifiers.
+
+iOS 17 → Observation (new data flow model), Animation improvements, better ScrollView.
+
+
 ## Qestion 1: Why Swift UI uses struct for view insted of class?
 - structs are much better than classes in performance.
 - No need to worry about memory leaks & thread saftey.
