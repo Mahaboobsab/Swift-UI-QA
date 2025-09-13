@@ -956,7 +956,7 @@ struct MainView: View {
 }
 ```
 
-## Question 18: 🧭 What Is the difference between EnvironmentObject & Environmenet?  
+## Question 18: 🧭 What Is the difference between EnvironmentObject & Environment?  
 
 **🧠 @EnvironmentObject**  
 - **Purpose**: Injects a shared ObservableObject into the view hierarchy.
