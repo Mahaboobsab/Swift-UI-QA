@@ -956,7 +956,38 @@ struct MainView: View {
 }
 ```
 
+## Question 18: 🧭 What Is the difference between EnvironmentObject & Environmenet?  
 
+**🧠 @EnvironmentObject**  
+- **Purpose**: Injects a shared ObservableObject into the view hierarchy.
+- **Usage**: You declare it in a view like this:
+
+```swift
+@EnvironmentObject var settings: UserSettings
+```
+- **Requires**: The object must be provided via .environmentObject() from a parent view or App entry point.
+- **Use Case**: App-wide state like user session, theme, or settings.
+
+**🌿 @Environment**  
+
+- **Purpose**: Accesses system-defined values from the environment (not your custom objects).
+- **Usage**: You declare it like this:
+
+```swift
+@Environment(\.colorScheme) var colorScheme
+```
+
+**Provides: Built-in values like:**  
+
+- \.colorScheme
+- \.presentationMode
+- \.locale
+- \.accessibilityEnabled
+- \.dismiss (iOS 15+)
+  
+**Use Case:** Reading system context or triggering system behaviors.  
+
+<img width="725" height="208" alt="Screenshot 2025-09-13 at 8 52 23 PM" src="https://github.com/user-attachments/assets/fadb7737-22b6-4338-8134-456bea0d4050" />
 
 
 
