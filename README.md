@@ -987,7 +987,36 @@ struct MainView: View {
   
 **Use Case:** Reading system context or triggering system behaviors.  
 
-<img width="725" height="208" alt="Screenshot 2025-09-13 at 8 52 23 PM" src="https://github.com/user-attachments/assets/fadb7737-22b6-4338-8134-456bea0d4050" />
+<img width="725" height="208" alt="Screenshot 2025-09-13 at 8 52 23 PM" src="https://github.com/user-attachments/assets/fadb7737-22b6-4338-8134-456bea0d4050" />  
+
+## Question 19: Lifecycle Methods of Swift UI?  
+
+```
+@Environment(\.scenePhase) var scenePhase
+
+.onChange(of: scenePhase) { newPhase in
+    switch newPhase {
+    case .active:
+        print("App is active")
+    case .inactive:
+        print("App is inactive")
+    case .background:
+        print("App is in background")
+    default:
+        break
+    }
+}
+```
+
+This replaces applicationDidBecomeActive, applicationDidEnterBackground, etc.  
+
+AppDelegate Support (Optional)  
+
+If you still need legacy delegate methods (e.g., push notifications), you can use:   
+
+```
+@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+```
 
 
 
