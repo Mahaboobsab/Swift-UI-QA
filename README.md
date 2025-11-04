@@ -1017,6 +1017,82 @@ If you still need legacy delegate methods (e.g., push notifications), you can us
 ```
 @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 ```
+## Question 20: Create your own custom @Environment and inject?  
 
+**🧩 Goal**  
+We’ll create:  
+our own custom environment key (EnvironmentKey)  
+an extension on EnvironmentValues  
+then inject and read that environment value in our views 
+
+**✅ Step 1: Create a Custom Environment Key**  
+```swift
+import SwiftUI
+
+private struct UsernameKey: EnvironmentKey {
+    static let defaultValue: String = "Guest"
+}
+```
+
+💡 Every environment key must have a defaultValue. If no value is injected, SwiftUI will use this one.  
+ 
+**✅ Step 2: Extend EnvironmentValues**  
+
+```swift
+extension EnvironmentValues {
+    var username: String {
+        get { self[UsernameKey.self] }
+        set { self[UsernameKey.self] = newValue }
+    }
+}
+```
+💡 This adds a new computed property .username to EnvironmentValues,
+just like SwiftUI has built-in keys like .colorScheme, .dismiss, etc.  
+
+**✅ Step 3: Use and Inject the Environment Value**  
+
+Parent view (injects the value):  
+```swift
+struct ContentView: View {
+    var body: some View {
+        ChildView()
+            .environment(\.username, "Meheboob") // 👈 Injecting our custom value
+    }
+}
+```
+
+**Child view (reads the value):**  
+
+```swift
+struct ChildView: View {
+    @Environment(\.username) var username  // 👈 Reading the custom environment value
+
+    var body: some View {
+        Text("Welcome, \(username)!")
+            .padding()
+    }
+}
+```
+
+**✅ Step 4: Run and Observe**  
+
+**If you run this, it’ll show:**  
+
+```swift
+Welcome, Meheboob!
+```
+
+If you remove the .environment(\.username, "Meheboob") modifier,
+it’ll fall back to the defaultValue from UsernameKey:
+
+```swift
+Welcome, Guest!
+```
+
+**🧠 How to Explain in an Interview**  
+
+“In SwiftUI, I can create my own @Environment values by defining a custom EnvironmentKey, extending EnvironmentValues with a computed property, and then injecting the value using .environment(\.myKey, value).  
+
+Any child view can then access that value using @Environment(\.myKey).”
 
 
