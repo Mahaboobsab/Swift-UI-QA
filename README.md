@@ -1096,3 +1096,41 @@ Welcome, Guest!
 Any child view can then access that value using @Environment(\.myKey).”
 
 
+## Question 21: How to create reusable custom view modifiers?  
+
+
+
+~~~swift
+struct CardModifier: ViewModifier {
+  func body(content: Content) -> some View {
+    content.padding().background(.ultraThinMaterial).cornerRadius(8)
+  }
+}
+extension View {
+  func cardStyle() -> some View { modifier(CardModifier()) }
+}
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, world!")
+                .cardStyle()
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    ContentView()
+}
+~~~
+<img width="284" height="529" alt="Screenshot 2025-11-06 at 7 16 47 PM" src="https://github.com/user-attachments/assets/5a8d37f0-5c66-47d3-9f27-a20065edcf15" />
+<img width="256" height="509" alt="Screenshot 2025-11-06 at 7 16 36 PM" src="https://github.com/user-attachments/assets/f438bbf0-b4be-4dd8-9416-4cc491f5aff0" />
+
+
+
