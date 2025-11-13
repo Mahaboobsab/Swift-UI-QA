@@ -1136,7 +1136,94 @@ struct ContentView: View {
 }
 ~~~
 <img width="284" height="529" alt="Screenshot 2025-11-06 at 7 16 47 PM" src="https://github.com/user-attachments/assets/5a8d37f0-5c66-47d3-9f27-a20065edcf15" />
-<img width="256" height="509" alt="Screenshot 2025-11-06 at 7 16 36 PM" src="https://github.com/user-attachments/assets/f438bbf0-b4be-4dd8-9416-4cc491f5aff0" />
+<img width="256" height="509" alt="Screenshot 2025-11-06 at 7 16 36 PM" src="https://github.com/user-attachments/assets/f438bbf0-b4be-4dd8-9416-4cc491f5aff0" />  
+
+## Question 22: What is View Composition in swift UI?  
+
+View Composition in SwiftUI is the practice of breaking complex user interfaces into smaller, reusable views to improve clarity, maintainability, and scalability.  
+
+**🧩 What View Composition Means**  
+
+In SwiftUI, your UI is built from views like Text, Image, Button, VStack, etc. As your app grows, managing everything in one big view becomes messy. View Composition solves this by letting you split your UI into smaller, focused components — each responsible for a specific part of the interface.  
+
+**✅ Benefits of View Composition**  
+
+- Improves readability: Smaller views are easier to understand and debug.
+- Encourages reuse: You can reuse components like buttons, cards, or headers across screens.
+- Supports modular architecture: Each view can be tested and styled independently.
+- Enhances maintainability: Changes in one component don’t affect the entire layout.
+
+**🧩 Example: Before vs After**  
+
+❌ Without Composition  
+
+~~~swift
+VStack {
+    Text("Welcome")
+        .font(.largeTitle)
+        .padding()
+    Image("hero")
+        .resizable()
+        .scaledToFit()
+    Button("Start") {
+        // action
+    }
+}
+~~~
+
+**✅ With Composition**  
+
+~~~swift
+struct WelcomeHeader: View {
+    var body: some View {
+        Text("Welcome")
+            .font(.largeTitle)
+            .padding()
+    }
+}
+
+struct HeroImage: View {
+    var body: some View {
+        Image("hero")
+            .resizable()
+            .scaledToFit()
+    }
+}
+
+struct StartButton: View {
+    var body: some View {
+        Button("Start") {
+            // action
+        }
+    }
+}
+
+VStack {
+    WelcomeHeader()
+    HeroImage()
+    StartButton()
+}
+~~~
+
+
+**🧩 Advanced Composition: ViewModifiers**  
+
+You can also use ViewModifiers to encapsulate styling logic:  
+
+~~~swift
+struct CapsuleStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+    }
+}
+
+Text("Styled")
+    .modifier(CapsuleStyle())
+~~~
 
 
 
