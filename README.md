@@ -13,6 +13,61 @@ iOS 16 → Grid, NavigationStack, Charts, ShareLink, more modifiers.
 
 iOS 17 → Observation (new data flow model), Animation improvements, better ScrollView.
 
+~~~swift
+
+┌───────────────────────────────────────────┐
+│           VIEW SCOPE (Outside Body)       │
+│-------------------------------------------│
+│ @State                                    │
+│ @StateObject                               │
+│ @ObservedObject                            │
+│ @EnvironmentObject                         │
+│ let/var properties                         │
+│                                           │
+│ Example:                                   │
+│ @StateObject var viewModel = ViewModel()  │
+│ @State var paths: [String] = []           │
+└───────────────────────────────────────────┘
+
+                    │
+                    ▼
+
+┌───────────────────────────────────────────┐
+│        BODY SCOPE (UI / View Building)    │
+│-------------------------------------------│
+│ VStack / HStack / ZStack / List / Scroll  │
+│ Buttons                                   │
+│ Text, Images, Components                  │
+│ View modifiers (padding, frame, style)    │
+│ .task { await API() }                     │
+│                                           │
+│ Example:                                   │
+│ VStack {                                   │
+│     List(viewModel.users) { ... }         │
+│     Button("Submit") { ... }              │
+│ }                                          │
+└───────────────────────────────────────────┘
+
+                    │
+                    ▼
+
+┌───────────────────────────────────────────┐
+│     NAVIGATION SCOPE (Inside Navigation)  │
+│-------------------------------------------│
+│ NavigationStack(path: $paths)             │
+│ NavigationLink                             │
+│ .navigationTitle("Title")                 │
+│ .navigationDestination(...)               │
+│ .toolbar(...)                              │
+│                                           │
+│ Example:                                   │
+│ NavigationStack(path: $paths) {           │
+│     VStack { ... }                        │
+│ }                                          │
+│ .navigationTitle("First View")            │
+│ .navigationDestination(for: String.self)  │
+└───────────────────────────────────────────┘
+~~~
 
 ## Qestion 1: Why Swift UI uses struct for view insted of class?
 - structs are much better than classes in performance.
