@@ -79,7 +79,7 @@ struct ContentView: View {
 }
 ~~~
 
-## Question 1:  Explain SwiftUI View Life Cycle?  
+## Question 2:  Explain SwiftUI View Life Cycle?  
 
 In SwiftUI, views don’t have a traditional life cycle like UIKit’s viewDidLoad or viewWillAppear. Instead, SwiftUI views are structs that are recreated whenever their state changes. The “life cycle” is declarative: you describe what the UI should look like for a given state, and SwiftUI automatically re-renders when that state updates.  
 
@@ -149,7 +149,7 @@ Views can react to app-level changes using @Environment values.
 Example: @Environment(\.scenePhase) lets you respond to app foreground/background transitions.  
 
 
-## Question 2: Explain Swift Concurrency?  
+## Question 3: Explain Swift Concurrency?  
 
 Swift introduced structured concurrency in Swift 5.5, which includes:  
 
@@ -257,7 +257,7 @@ Only one task at a time can call increment().
 **Actor isolation** = a safety guard that ensures only one task changes data at a time, preventing crashes and weird bugs.  
 
 
-## Question 3: ✅ What is a view identifier in SwiftUI?  
+## Question 4: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
 
 **✅ Q2: Why do we need view identifiers in SwiftUI?**  
@@ -309,7 +309,7 @@ SwiftUI uses identifiers in its diffing algorithm to:
 - Avoid unnecessary re-rendering.  
 
 
-## Question 4: ✅ What is the diffing algorithm?  
+## Question 5: ✅ What is the diffing algorithm?  
  The **old tree and new tree** in SwiftUI’s diffing algorithm are key to how SwiftUI efficiently updates your UI without rebuilding everything from scratch.  
 
  SwiftUI uses a virtual view tree to represent your UI. Every time your app’s state changes, SwiftUI:
@@ -489,12 +489,12 @@ iOS 26 → AI‑adaptive SwiftUI with RealityView, DistributedObservation, dec
 
 
 
-## Qestion 1: Why Swift UI uses struct for view insted of class?
+## Qestion 6: Why Swift UI uses struct for view insted of class?
 - structs are much better than classes in performance.
 - No need to worry about memory leaks & thread saftey.
 - Swift UI creates views in multiple times, & using structs helps us in managing these instances effectively.
 
-## Qestion 2:  SwiftUI - Automatic Accessibility Support
+## Qestion 7:  SwiftUI - Automatic Accessibility Support
 - SwiftUI provides built-in accessibility features that work automatically with minimal developer effort.
 - Unlike UIKit, where you have to manually configure accessibility for each UI element,
   SwiftUI infers accessibility traits, labels, and roles based on the view type and content.
@@ -517,7 +517,7 @@ iOS 26 → AI‑adaptive SwiftUI with RealityView, DistributedObservation, dec
       }
       .accessibilityHint("Submits the form")
 ```
-## Qestion 3: What is an Alignment Guide in SwiftUI?  
+## Qestion 8: What is an Alignment Guide in SwiftUI?  
 
 ✅ **What** is an Alignment Guide?  
 - An alignment guide in SwiftUI is a tool that lets you customize how views are aligned inside layout containers like **HStack, VStack, or ZStack**.
@@ -620,7 +620,7 @@ struct ContentView: View {
 <img width="283" height="556" alt="Screenshot 2025-07-14 at 9 43 12 PM" src="https://github.com/user-attachments/assets/99851693-bd0f-419f-b76b-e687b34ddd7f" />
 
 
-## Qestion 4: What is an TCA (The composable Architecture)?
+## Qestion 9: What is an TCA (The composable Architecture)?
 
 - The Swift Composable Architecture (TCA) is a powerful framework developed by Point-Free (Brandon Williams and Stephen Celis).
 - Used for building applications in a consistent, modular, and testable way across all Apple platforms.
@@ -737,27 +737,27 @@ extension DependencyValues {
   **Dependency** is your tools (sword, shield, map).  
   You don’t carry all tools inside you—you ask for them when needed.  
 
-## Question 5: Does SwiftUI ViewModifiers order affect the results? 
+## Question 10: Does SwiftUI ViewModifiers order affect the results? 
 
 - Yes, The below image showing how the order of SwiftUI ViewModifiers affects the result. 
 - In short: 
 - .background(Color.red).padding() → background is tight around the text. 
 - .padding().background(Color.red) → background wraps the padded area.
 
-## Question 6: What is associatedType and how does SwiftUI use it? 
+## Question 11: What is associatedType and how does SwiftUI use it? 
 
 - AssociatedTypes is a part of the mechanisms for using generics in protocols.
 -  SwiftUI view is making heavy use of generics and associatedTypes. 
 - SwiftUI uses the associatedType in View protocol, where the body property returns an associatedType of View, meaning View can be any type of View like HStack, ZStack, or ListView.
   
-## Question 7: How do you identify performance issues in swiftUI? 
+## Question 12: How do you identify performance issues in swiftUI? 
 
     1. Use Instruments (Xcode Tool) 
     2. SwiftUI Performance Template: Use this in Instruments to track rendering, layout, and view updates. 
     3. Time Profiler: Helps identify slow functions or excessive recomputation. 
     4. Memory Graph: Detect memory leaks or retain cycles. 
 
-## Question 8: How to debug a SwiftUI view? 
+## Question 13: How to debug a SwiftUI view? 
 
 	- We use the _printChanges() method to detect changes in a View.
   - Additionally, we can capture the view hierarchy for inspecting the layout or getting more information about the view.
@@ -769,15 +769,15 @@ extension DependencyValues {
 - Debugging performance issues 
 - Understanding how state affects rendering
 
-## Question 9: How to use gestures in swiftUI? 
+## Question 14: How to use gestures in swiftUI? 
 - In SwiftUI, gestures are a powerful way to add interactivity to your views. 
 - You can use built-in gesture modifiers to detect taps, drags, long presses, magnification (pinch), rotation, and more. Here's a quick overview of how to use gestures in SwiftUI
 
-## Question 10: What is the difference between Appstorage & Userdefaults?
+## Question 15: What is the difference between Appstorage & Userdefaults?
 
 <img width="816" height="338" alt="Screenshot 2025-07-20 at 8 08 02 PM" src="https://github.com/user-attachments/assets/be6e456c-8fbc-4639-a374-7760d8137d21" />
  
-## Question 11: Explain Combine Publishers?  
+## Question 16: Explain Combine Publishers?  
 
 🚀**What is a Publisher?**  
 
@@ -987,7 +987,7 @@ NotificationCenter**
 | PassthroughSubject as Subscriber | Can subscribe to another publisher and re-emit values. |
 | CurrentValueSubject as Subscriber | Subscribes and holds the latest value, re-emitting it to new subscribers. |
 
-## Question 12: What are the new components introduced in SwiftUI over UIKit?  
+## Question 17: What are the new components introduced in SwiftUI over UIKit?  
 
 # New Components in SwiftUI Compared to UIKit
 
@@ -1058,7 +1058,7 @@ SwiftUI introduces several new components and concepts that differ significantly
 
 SwiftUI simplifies UI development by reducing boilerplate and making layouts more intuitive and adaptive.  
 
-## Question 13: What is Boxed type?  
+## Question 18: What is Boxed type?  
 
 **✅ Definition:**  
 
@@ -1133,7 +1133,7 @@ struct ChildView: View {
 }
 ```
 
-## Question 14: SwiftUI 🆚 Combine?  
+## Question 19: SwiftUI 🆚 Combine?  
 
 **✅ What is SwiftUI?**  
 
@@ -1246,7 +1246,7 @@ Use opaque types when:
 - You want **better performance**.
 
 
-## Question 15: What is @ViewBuilder in SwiftUI, and why would you use it?  
+## Question 20: What is @ViewBuilder in SwiftUI, and why would you use it?  
 
 - **@ViewBuilder** is a result builder provided by SwiftUI.
 
@@ -1274,7 +1274,7 @@ func destinationView(for title: String) -> some View {
     }
 }
 ```
-## Question 16: What is the difference between @StateObject and @ObservedObject?  
+## Question 21: What is the difference between @StateObject and @ObservedObject?  
 
 The difference between @StateObject and @ObservedObject in SwiftUI comes down to ownership and lifecycle management of your observable view model.  
 <img width="750" height="261" alt="Screenshot 2025-09-05 at 3 35 01 PM" src="https://github.com/user-attachments/assets/177423a9-76a0-4163-9140-8c269d819e63" />  
@@ -1348,7 +1348,7 @@ struct ContentView: View {
     ContentView()
 }
 ```
-## Question 17: 🧭 What Is NavigationPath?  
+## Question 22: 🧭 What Is NavigationPath?  
 
 NavigationPath is a type-erased collection that stores the state of the navigation stack.  
 It lets you push and pop views dynamically, and even serialize the stack for persistence.  
@@ -1431,7 +1431,7 @@ struct MainView: View {
 }
 ```
 
-## Question 18: 🧭 What Is the difference between EnvironmentObject & Environment?  
+## Question 23: 🧭 What Is the difference between EnvironmentObject & Environment?  
 
 <img width="870" height="478" alt="Screenshot 2025-11-06 at 8 45 05 PM" src="https://github.com/user-attachments/assets/bd4eea36-2772-4658-abda-c37f29405f70" />  
 
@@ -1470,7 +1470,7 @@ struct MainView: View {
 
 <img width="725" height="208" alt="Screenshot 2025-09-13 at 8 52 23 PM" src="https://github.com/user-attachments/assets/fadb7737-22b6-4338-8134-456bea0d4050" />  
 
-## Question 19: Lifecycle Methods of Swift UI?  
+## Question 24: Lifecycle Methods of Swift UI?  
 
 ```
 @Environment(\.scenePhase) var scenePhase
@@ -1498,7 +1498,7 @@ If you still need legacy delegate methods (e.g., push notifications), you can us
 ```
 @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 ```
-## Question 20: Create your own custom @Environment and inject?  
+## Question 25: Create your own custom @Environment and inject?  
 
 **🧩 Goal**  
 We’ll create:  
@@ -1613,7 +1613,7 @@ struct ContentView: View {
 <img width="284" height="529" alt="Screenshot 2025-11-06 at 7 16 47 PM" src="https://github.com/user-attachments/assets/5a8d37f0-5c66-47d3-9f27-a20065edcf15" />
 <img width="256" height="509" alt="Screenshot 2025-11-06 at 7 16 36 PM" src="https://github.com/user-attachments/assets/f438bbf0-b4be-4dd8-9416-4cc491f5aff0" />  
 
-## Question 22: What is View Composition in swift UI?  
+## Question 26: What is View Composition in swift UI?  
 
 View Composition in SwiftUI is the practice of breaking complex user interfaces into smaller, reusable views to improve clarity, maintainability, and scalability.  
 
