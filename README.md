@@ -1,7 +1,79 @@
-# Swift UI - QA
-Consist important interview Questions &amp; Answer's
+# Swift UI - QA  
+Consist important interview Questions &amp; Answer's  
 
-📌 Examples of Evolution
+
+## Question 1: ✅ What is the diffing algorithm?  
+ The **old tree and new tree** in SwiftUI’s diffing algorithm are key to how SwiftUI efficiently updates your UI without rebuilding everything from scratch.  
+
+ SwiftUI uses a virtual view tree to represent your UI. Every time your app’s state changes, SwiftUI:
+
+1. Builds a new view tree based on the updated state.
+2. Compares it to the previous (old) view tree.
+3. Figures out what changed and updates only those parts of the UI.
+This process is called diffing.
+
+
+**Old Tree vs New Tree**  
+
+- **Old Tree**: The view hierarchy SwiftUI created during the last render.
+- **New Tree**: The view hierarchy SwiftUI creates after your state changes.
+
+**How does SwiftUI know what’s the same?**  
+**It uses view identity:**  
+
+- If two views have the same type and identifier (id), SwiftUI assumes they represent the same thing and reuses them.
+- If the identity changes, SwiftUI replaces the old view with a new one.
+
+SwiftUI compares these two trees node by node to determine:  
+
+Which views are the same (can be reused).  
+Which views are different (need to be updated or replaced).  
+Which views are added or removed.  
+
+**Simple Example**  
+~~~swift
+struct ContentView: View {
+    @State private var names = ["Alice", "Bob"]
+
+    var body: some View {
+        List {
+            ForEach(names, id: \.self) { name in
+                Text(name)
+            }
+        }
+    }
+}
+~~~
+
+**Old Tree**: ["Alice", "Bob"]  
+**New Tree** (after adding "Charlie"): ["Alice", "Bob", "Charlie"]  
+
+**SwiftUI compares:**  
+
+- Alice → same
+- Bob → same
+- Charlie → new → insert a new row
+
+**Why is this important?**  
+
+- **Performance**: Only changed views are updated.
+- **Animations**: SwiftUI can animate insertions/deletions because it knows what changed.
+- **State Preservation**: Views that remain the same keep their state (e.g., scroll position).
+
+**✅ In short:**
+
+- **Old Tree** = previous snapshot of your UI.
+- **New Tree** = new snapshot after state changes.
+
+**SwiftUI compares them to update only what’s necessary.**
+
+
+
+
+
+
+
+**📌 Examples of Evolution**
 
 iOS 13 → Core SwiftUI (basic views like Text, Button, List, NavigationView, Form, Bindings, ObservableObject).
 
@@ -68,6 +140,9 @@ iOS 17 → Observation (new data flow model), Animation improvements, better Scr
 │ .navigationDestination(for: String.self)  │
 └───────────────────────────────────────────┘
 ~~~
+
+
+
 
 ## Qestion 1: Why Swift UI uses struct for view insted of class?
 - structs are much better than classes in performance.
