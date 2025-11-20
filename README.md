@@ -30,6 +30,31 @@ if !launchedBefore {
 - Risk of typos in the key string.
 - Logic scattered across the app.
 
+**✅ Property Wrapper Solution**  
+
+We can encapsulate this into a reusable wrapper:  
+~~~swift
+@propertyWrapper
+struct AppStorageFlag {
+    let key: String
+    
+    init(_ key: String) {
+        self.key = key
+    }
+    
+    var wrappedValue: Bool {
+        get { UserDefaults.standard.bool(forKey: key) }
+        set { UserDefaults.standard.set(newValue, forKey: key) }
+    }
+}
+
+// Usage
+struct AppSettings {
+    @AppStorageFlag("launchedBefore")
+    var launchedBefore: Bool
+}
+~~~
+
 
 ## Question 1:  Explain SwiftUI View Life Cycle?  
 
