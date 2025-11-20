@@ -1,6 +1,36 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: What are Property Wrappers in Swift?  
+
+Property Wrappers in Swift are a way to encapsulate common logic for property storage and behavior. They let you define reusable wrappers that manage how a property is read and written. A common example is @State in SwiftUI, which automatically re-renders a view when its value changes.  
+
+**🌀 What Are Property Wrappers?**  
+
+- Introduced in Swift 5 (WWDC 2019).
+- They allow developers to attach custom behavior to properties without repeating boilerplate code.
+- Syntax: @propertyWrapper applied to a struct/class that defines a wrappedValue.
+- Used heavily in SwiftUI (@State, @Binding, @ObservedObject, @EnvironmentObject, @AppStorage).
+
+**Example**: 
+Without a property wrapper, you’d typically write:  
+
+~~~swift
+let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+
+if !launchedBefore {
+    // First launch logic
+    UserDefaults.standard.set(true, forKey: "launchedBefore")
+}
+~~~
+
+**Issues:**  
+
+- Repeated UserDefaults boilerplate.
+- Risk of typos in the key string.
+- Logic scattered across the app.
+
+
 ## Question 1:  Explain SwiftUI View Life Cycle?  
 
 In SwiftUI, views don’t have a traditional life cycle like UIKit’s viewDidLoad or viewWillAppear. Instead, SwiftUI views are structs that are recreated whenever their state changes. The “life cycle” is declarative: you describe what the UI should look like for a given state, and SwiftUI automatically re-renders when that state updates.  
