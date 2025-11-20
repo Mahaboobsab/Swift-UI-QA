@@ -109,7 +109,7 @@ Only one task at a time can call increment().
 **Actor isolation** = a safety guard that ensures only one task changes data at a time, preventing crashes and weird bugs.  
 
 
-## Question 1: ✅ What is a view identifier in SwiftUI?  
+## Question 2: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
 
 **✅ Q2: Why do we need view identifiers in SwiftUI?**  
@@ -161,7 +161,7 @@ SwiftUI uses identifiers in its diffing algorithm to:
 - Avoid unnecessary re-rendering.  
 
 
-## Question 1: ✅ What is the diffing algorithm?  
+## Question 3: ✅ What is the diffing algorithm?  
  The **old tree and new tree** in SwiftUI’s diffing algorithm are key to how SwiftUI efficiently updates your UI without rebuilding everything from scratch.  
 
  SwiftUI uses a virtual view tree to represent your UI. Every time your app’s state changes, SwiftUI:
@@ -265,14 +265,9 @@ Text(name)
 - UIKit requires manual updates, SwiftUI uses automatic diffing based on state.
 - This makes SwiftUI more predictable, less error-prone, and easier to maintain.
 
+______________________________________________________________________________________________
 
-
-
-
-
-
-
-**📌 Examples of Evolution**
+# 📌 Swift UI Evolution**
 
 iOS 13 → Core SwiftUI (basic views like Text, Button, List, NavigationView, Form, Bindings, ObservableObject).
 
@@ -284,8 +279,9 @@ iOS 16 → Grid, NavigationStack, Charts, ShareLink, more modifiers.
 
 iOS 17 → Observation (new data flow model), Animation improvements, better ScrollView.
 
-~~~swift
+# Understand the scope  
 
+~~~swift
 ┌───────────────────────────────────────────┐
 │           VIEW SCOPE (Outside Body)       │
 │-------------------------------------------│
