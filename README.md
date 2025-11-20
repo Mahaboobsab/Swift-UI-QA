@@ -1,7 +1,7 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
-## Question 1 Explain SwiftUI View Life Cycle?  
+## Question 1:  Explain SwiftUI View Life Cycle?  
 
 In SwiftUI, views don’t have a traditional life cycle like UIKit’s viewDidLoad or viewWillAppear. Instead, SwiftUI views are structs that are recreated whenever their state changes. The “life cycle” is declarative: you describe what the UI should look like for a given state, and SwiftUI automatically re-renders when that state updates.  
 
