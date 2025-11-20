@@ -54,7 +54,30 @@ struct AppSettings {
     var launchedBefore: Bool
 }
 ~~~
+**🎯 How It Works**  
 
+- @AppStorageFlag("launchedBefore") creates a property backed by UserDefaults.
+- When you read launchedBefore, it fetches the value from UserDefaults.
+- When you set launchedBefore = true, it saves to UserDefaults.
+
+~~~swift
+struct ContentView: View {
+    @AppStorageFlag("launchedBefore") var launchedBefore
+    
+    var body: some View {
+        VStack {
+            if launchedBefore {
+                Text("Welcome back!")
+            } else {
+                Text("Hello, first-time user!")
+                    .onAppear {
+                        launchedBefore = true
+                    }
+            }
+        }
+    }
+}
+~~~
 
 ## Question 1:  Explain SwiftUI View Life Cycle?  
 
