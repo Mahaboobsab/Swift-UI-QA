@@ -65,7 +65,47 @@ struct ContentView: View {
 - **Old Tree** = previous snapshot of your UI.
 - **New Tree** = new snapshot after state changes.
 
-**SwiftUI compares them to update only what’s necessary.**
+SwiftUI compares them to update only what’s necessary.  
+
+
+**✅ How does this differ from UIKit?**  
+
+UIKit is imperative, while SwiftUI is declarative:  
+UIKit Approach  
+
+You manually tell the system what changed:  
+~~~swift
+label.text = "New Text"
+view.backgroundColor = .red
+~~~
+- You are responsible for updating each property and managing the view hierarchy.
+- If you forget to update something, the UI becomes inconsistent.
+
+**SwiftUI Approach**  
+
+You describe what the UI should look like for a given state  
+
+~~~swift
+Text(name)
+    .foregroundColor(isActive ? .blue : .gray)
+~~~
+- When isActive changes, SwiftUI rebuilds the view tree and automatically figures out what needs updating using diffing.
+- You don’t manually update views—SwiftUI does it for you.
+
+**✅ Why is SwiftUI’s diffing better?**  
+
+- **Less boilerplate**: No need to write reloadData() or manually update constraints.
+- **Performance optimized**: Updates only changed parts, not the entire UI.
+- **State-drive**n: UI always matches your data model.
+- **Animations**: SwiftUI can animate changes because it knows what changed.
+
+
+**✅ Summary**  
+
+- Diffing is core to SwiftUI, not just for previews.
+- UIKit requires manual updates, SwiftUI uses automatic diffing based on state.
+- This makes SwiftUI more predictable, less error-prone, and easier to maintain.
+
 
 
 
