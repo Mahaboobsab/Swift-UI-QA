@@ -1,7 +1,77 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
-## Question 1: Explain Swift Concurrency?  
+## Question 1 Explain SwiftUI View Life Cycle?  
+
+In SwiftUI, views don’t have a traditional life cycle like UIKit’s viewDidLoad or viewWillAppear. Instead, SwiftUI views are structs that are recreated whenever their state changes. The “life cycle” is declarative: you describe what the UI should look like for a given state, and SwiftUI automatically re-renders when that state updates.  
+
+**🌀 SwiftUI View Life Cycle Explained**  
+
+**1. No Traditional Callbacks**  
+
+UIKit views have explicit callbacks (viewDidLoad, viewWillAppear, viewDidDisappear).  
+
+SwiftUI views are value types (structs), so they don’t persist in memory the same way.  
+
+Instead of callbacks, SwiftUI relies on state-driven rendering.  
+
+**2. Creation & Re-rendering**  
+
+A SwiftUI view is created whenever its body is evaluated.  
+
+The body is a computed property that returns the UI hierarchy.  
+
+When state changes (@State, @Binding, @ObservedObject, @EnvironmentObject), SwiftUI invalidates the view and re-computes the body.  
+
+**3. State Management Drives Life Cycle**  
+@State: Local state for a view. Changes trigger re-render.  
+
+@Binding: Passes state between parent and child views.  
+
+@ObservedObject / @EnvironmentObject: Share state across multiple views.  
+
+The view’s life cycle is essentially tied to these property wrappers.  
+
+**4. View Initialization**  
+Views can have initializers, but they don’t guarantee persistence.  
+ 
+**Example**:  
+~~~swift
+struct CounterView: View {
+    @State private var count = 0
+    
+    var body: some View {
+        VStack {
+            Text("Count: \(count)")
+            Button("Increment") { count += 1 }
+        }
+    }
+}
+~~~
+Each time count changes, SwiftUI re-renders the view.  
+
+**5. Side Effects & Lifecycle Hooks**  
+
+SwiftUI provides modifiers to handle side effects:  
+
+- onAppear → Called when the view appears on screen.
+
+- onDisappear → Called when the view is removed.
+
+- task {} → Run async tasks when the view appears.
+
+- onChange(of:) → Respond to state changes.
+
+These replace UIKit’s lifecycle methods.  
+
+**6. Environment Integration**  
+
+Views can react to app-level changes using @Environment values.  
+
+Example: @Environment(\.scenePhase) lets you respond to app foreground/background transitions.  
+
+
+## Question 2: Explain Swift Concurrency?  
 
 Swift introduced structured concurrency in Swift 5.5, which includes:  
 
@@ -109,7 +179,7 @@ Only one task at a time can call increment().
 **Actor isolation** = a safety guard that ensures only one task changes data at a time, preventing crashes and weird bugs.  
 
 
-## Question 2: ✅ What is a view identifier in SwiftUI?  
+## Question 3: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
 
 **✅ Q2: Why do we need view identifiers in SwiftUI?**  
@@ -161,7 +231,7 @@ SwiftUI uses identifiers in its diffing algorithm to:
 - Avoid unnecessary re-rendering.  
 
 
-## Question 3: ✅ What is the diffing algorithm?  
+## Question 4: ✅ What is the diffing algorithm?  
  The **old tree and new tree** in SwiftUI’s diffing algorithm are key to how SwiftUI efficiently updates your UI without rebuilding everything from scratch.  
 
  SwiftUI uses a virtual view tree to represent your UI. Every time your app’s state changes, SwiftUI:
@@ -277,7 +347,9 @@ iOS 15 → AsyncImage, .refreshable, Markdown in Text, better List swipe actions
 
 iOS 16 → Grid, NavigationStack, Charts, ShareLink, more modifiers.
 
-iOS 17 → Observation (new data flow model), Animation improvements, better ScrollView.
+iOS 17 → Observation (new data flow model), Animation improvements, better ScrollView.  
+
+iOS 26 → AI‑adaptive SwiftUI with RealityView, DistributedObservation, declarative AR/VR layouts, and self‑healing animations.
 
 # Understand the scope  
 
