@@ -1701,4 +1701,13 @@ Text("Styled")
 ~~~
 
 
+## Question 27: AsyncImage?  
 
+AsyncImage is a built-in SwiftUI view (introduced in iOS 15, macOS 12) used to load and display images from the web asynchronously. It handles downloading, caching (system-level), and rendering automatically.  
+
+**✨ Key Features  **
+
+- Loads images from a URL
+- Runs asynchronously (doesn’t block UI)
+- Can show placeholder while loading
+- Can handle success/failure states
