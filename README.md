@@ -265,6 +265,15 @@ The main ways to prevent data races are:
 - Use Sendable to ensure thread-safe data passing
 - Avoid sharing mutable variables across tasks
 
+**When to Use DetachedTask**  
+
+Use a DetachedTask when:  
+
+- You want work to run outside the current actor or MainActor
+- You are in a @MainActor context but want to run background work
+- You want an independent background task not tied to the caller
+- Fire-and-forget work (logging, analytics, caching)
+
 
 ## Question 4: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
