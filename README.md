@@ -256,6 +256,15 @@ Only one task at a time can call increment().
 **✅ In short:**  
 **Actor isolation** = a safety guard that ensures only one task changes data at a time, preventing crashes and weird bugs.  
 
+**“Swift Concurrency avoids data races using structured concurrency and isolation.**  
+
+The main ways to prevent data races are:  
+
+- Use actors to protect mutable shared state
+- Use @MainActor for all UI updates in SwiftUI
+- Use Sendable to ensure thread-safe data passing
+- Avoid sharing mutable variables across tasks
+
 
 ## Question 4: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
