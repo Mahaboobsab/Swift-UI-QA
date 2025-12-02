@@ -1,6 +1,78 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: What is EquatableView?  
+
+EquatableView is a wrapper around a view that **only re-renders when its input data changes according to the Equatable protocol**.  
+In SwiftUI, views are re-rendered whenever their state changes, but sometimes the state changes don't actually affect the view's appearance. This can lead to unnecessary recomputation.  
+By using EquatableView, SwiftUI compares the **previous and new value** of the data. If they are equal (using ==), the view **does not update**  
+
+**✅ Why use it?**  
+
+- **Performance optimization**: Avoids expensive view updates when data hasn't really changed.
+- Useful for **complex views or views with heavy computations**.
+
+**✅ How to use it?**  
+
+You wrap your view inside .equatable() or use EquatableView directly.  
+~~~swift
+
+import SwiftUI
+
+struct User: Equatable {
+    let name: String
+    let age: Int
+}
+
+struct ContentView: View {
+    @State private var user = User(name: "Mahaboob", age: 30)
+    
+    var body: some View {
+        VStack {
+            EquatableView(content: UserView(user: user))
+            
+            Button("Update Age") {
+                user = User(name: "Mahaboob", age: 30) // Same age, same name
+            }
+        }
+    }
+}
+
+struct UserView: View, Equatable {
+    let user: User
+    
+    static func == (lhs: UserView, rhs: UserView) -> Bool {
+        lhs.user == rhs.user
+    }
+    
+    var body: some View {
+        print("UserView updated!") // For debugging
+        return Text("\(user.name), Age: \(user.age)")
+            .padding()
+    }
+}
+~~~
+
+**✅ What happens here?**  
+
+- When you click Update Age, the user value is reassigned but with the same data.
+- Because User conforms to Equatable, SwiftUI sees no change → UserView does NOT re-render.
+
+**✅ Shortcut: .equatable()**  
+Instead of using EquatableView explicitly, you can do:  
+
+~~~swift
+UserView(user: user)
+    .equatable()
+~~~
+This tells SwiftUI to compare the view's input and skip updates if equal. 
+
+**✅ When to use?**  
+
+- For views with expensive rendering logic.
+- When state changes frequently but doesn't affect UI.
+- For lists with complex rows.
+
 ## Question 1: What is a PreferenceKey in SwiftUI?  
 
 A PreferenceKey is a mechanism that lets a **child view send data upward to its parent**, even though SwiftUI is normally **one-way (top → down)**.  
