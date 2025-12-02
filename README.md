@@ -12,6 +12,62 @@ They rely on system-level APIs using AppDelegate, UNUserNotificationCenter, and 
 The registration, token handling, and notification callbacks are the same in both SwiftUI and UIKit.
 Only the way you navigate to a screen after tapping a notification differs.”  
 
+**⭐ Parts of Push Notifications (same for SwiftUI & UIKit)**  
+
+**1. Requesting permission → Same**  
+~~~swift
+UNUserNotificationCenter.current()
+    .requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in }
+~~~
+
+**2. Registering for remote notifications → Same**  
+Done inside **AppDelegate**:  
+
+~~~swift
+func application(_ application: UIApplication,
+                 didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    print("Device token:", deviceToken)
+}
+~~~
+
+**3. Receiving Notification → Same**  
+~~~swift
+func userNotificationCenter(_ center: UNUserNotificationCenter,
+                            didReceive response: UNNotificationResponse,
+                            withCompletionHandler completionHandler: @escaping () -> Void) {
+    // Handle tap on notification
+}
+~~~
+
+**⭐ Where SwiftUI differs from UIKit**  
+
+UIKit navigation after tapping notification  
+~~~swift
+let vc = MessageViewController()
+navigationController.pushViewController(vc, animated: true)
+~~~
+
+**SwiftUI navigation after tapping notification**  
+
+You update @State, @EnvironmentObject, or router:  
+
+~~~swift
+@MainActor
+appState.navigateTo = .messages
+~~~
+
+SwiftUI view responds:  
+~~~swift
+NavigationStack(path: $appState.path) { ... }
+~~~
+**⭐ Single-line Interview Summary**  
+
+Push notifications use AppDelegate + UNUserNotificationCenter, which work the same in SwiftUI and UIKit.
+The only difference is how you update UI when a notification is tapped.  
+
+
+**👉 Only navigation differs — not push notification code.**  
+
 ## Question 1: What are Property Wrappers in Swift?  
 
 Property Wrappers in Swift are a way to encapsulate common logic for property storage and behavior. They let you define reusable wrappers that manage how a property is read and written. A common example is @State in SwiftUI, which automatically re-renders a view when its value changes.  
