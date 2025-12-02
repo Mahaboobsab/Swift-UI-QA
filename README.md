@@ -80,6 +80,9 @@ This tells SwiftUI to compare the view's input and skip updates if equal.
 - When state changes frequently but doesn't affect UI.
 - For lists with complex rows.
 
+SwiftUI’s **diffing algorithm** compares view identity to reuse or replace views in the hierarchy, while **EquatableView** compares view data to skip unnecessary body recomputation.  
+
+
 ## Question 1: What is a PreferenceKey in SwiftUI?  
 
 A PreferenceKey is a mechanism that lets a **child view send data upward to its parent**, even though SwiftUI is normally **one-way (top → down)**.  
