@@ -175,7 +175,13 @@ struct ParentView: View {
     }
 }
 ~~~
-👉 Here, the parent catches the value using onPreferenceChange.
+👉 Here, the parent catches the value using onPreferenceChange.  
+
+**✅ What is AnchorPreference in SwiftUI?**  
+
+AnchorPreference is a SwiftUI mechanism that lets child views report layout information (like positions, bounds, sizes) upward to their ancestors.  
+<img width="831" height="412" alt="Screenshot 2025-12-02 at 11 09 28 PM" src="https://github.com/user-attachments/assets/bdffa05a-2c90-4a5b-9688-4b897c3061c1" />
+
 
 ## Question 1: What are all the ways to pass data between UIKit and SwiftUI?  
 
