@@ -82,6 +82,9 @@ This tells SwiftUI to compare the view's input and skip updates if equal.
 
 SwiftUI’s **diffing algorithm** compares view identity to reuse or replace views in the hierarchy, while **EquatableView** compares view data to skip unnecessary body recomputation.  
 
+<img width="512" height="512" alt="Copilot_20251202_211156" src="https://github.com/user-attachments/assets/c6c09ae1-5125-4fa5-9e0b-7763b6bdd1d5" />
+
+
 
 ## Question 1: What is a PreferenceKey in SwiftUI?  
 
