@@ -35,6 +35,44 @@ struct HeightPreferenceKey: PreferenceKey {
 }
 ~~~
 
+**Step 2: Child view writes its height**  
+~~~swift
+struct DynamicTextView: View {
+    var body: some View {
+        Text("This description can grow based on API response.")
+            .background(
+                GeometryReader { geo in
+                    Color.clear
+                        .preference(key: HeightPreferenceKey.self,
+                                    value: geo.size.height)
+                }
+            )
+    }
+}
+~~~
+👉 The child view publishes its height using .preference().  
+
+**Step 3: Parent view reads the child’s height**  
+~~~swift
+struct ParentView: View {
+    @State private var height: CGFloat = 0
+
+    var body: some View {
+        VStack {
+            DynamicTextView()
+                .onPreferenceChange(HeightPreferenceKey.self) { value in
+                    height = value
+                }
+
+            Text("Child height: \(height)")
+                .padding()
+                .background(.yellow)
+        }
+    }
+}
+~~~
+👉 Here, the parent catches the value using onPreferenceChange.
+
 ## Question 1: What are all the ways to pass data between UIKit and SwiftUI?  
 
  **UIKit → SwiftUI**  
