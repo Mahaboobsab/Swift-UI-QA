@@ -1,6 +1,30 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: What are all the ways to pass data between UIKit and SwiftUI?  
+
+ **UIKit → SwiftUI**  
+ 
+1. UIHostingController with initializer
+2. ObservableObject + @State/@Binding
+3. EnvironmentObject
+4. NotificationCenter
+5. Combine publishers
+6. Shared Singleton
+7. UserDefaults / AppStorage
+8. Delegates via Coordinator (UIKit → SwiftUI)
+9. Closure callbacks
+
+**SwiftUI → UIKit**  
+1. UIViewRepresentable / UIViewControllerRepresentable
+2. Binding into UIKit
+3. Coordinator delegate pattern
+4. Closure callbacks
+5. NotificationCenter
+6. Combine publishers
+7. Shared Singleton
+8. UserDefaults/AppStorage
+
 ## Question 1: How to implement push notification in Swift UI is different than UIKIt?  
 
 - **Short answer: No** — implementing push notifications is NOT different between SwiftUI and UIKit.
