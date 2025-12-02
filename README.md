@@ -1,5 +1,21 @@
 # Swift UI - QA  
-Consist important interview Questions &amp; Answer's  
+Consist important interview Questions &amp; Answer's 
+
+## Question 1: Why is SwiftUI declarative?  
+
+Because you describe what UI should look like, not how to update it. 
+
+Example:  
+~~~swift
+Text(username)
+~~~
+SwiftUI automatically updates UI when username changes.
+
+**No:**
+
+- diffing manually
+- reloadData
+- constraints
 
 ## Question 1: What are the phases of SwiftUI state rendering?  
 
