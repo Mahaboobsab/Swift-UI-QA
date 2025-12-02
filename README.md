@@ -1,6 +1,13 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: What are the phases of SwiftUI state rendering?  
+
+- Initial view creation
+- State change triggers diffing
+- Body re-computed
+- Minimal changes applied to UI
+
 ## Question 1: What is EquatableView?  
 
 EquatableView is a wrapper around a view that **only re-renders when its input data changes according to the Equatable protocol**.  
