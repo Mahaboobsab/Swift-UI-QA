@@ -1,6 +1,17 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: How to implement push notification in Swift UI is different than UIKIt?  
+
+- **Short answer: No** — implementing push notifications is NOT different between SwiftUI and UIKit.
+- Push notification setup happens in AppDelegate, which is the same for both.
+- Only UI-level handling differs slightly.
+
+“Push notifications are not implemented inside SwiftUI or UIKit directly.
+They rely on system-level APIs using AppDelegate, UNUserNotificationCenter, and APS.
+The registration, token handling, and notification callbacks are the same in both SwiftUI and UIKit.
+Only the way you navigate to a screen after tapping a notification differs.”  
+
 ## Question 1: What are Property Wrappers in Swift?  
 
 Property Wrappers in Swift are a way to encapsulate common logic for property storage and behavior. They let you define reusable wrappers that manage how a property is read and written. A common example is @State in SwiftUI, which automatically re-renders a view when its value changes.  
