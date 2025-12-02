@@ -1,6 +1,9 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's 
 
+## Question 1: What is the difference between .task {} and .onAppear {}?  
+<img width="741" height="305" alt="Screenshot 2025-12-02 at 11 03 14 PM" src="https://github.com/user-attachments/assets/af9f9fcb-564e-4c3a-8a9f-a2b98f4953d4" />
+
 ## Question 1: Why is SwiftUI declarative?  
 
 Because you describe what UI should look like, not how to update it. 
