@@ -1,6 +1,40 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's  
 
+## Question 1: What is a PreferenceKey in SwiftUI?  
+
+A PreferenceKey is a mechanism that lets a **child view send data upward to its parent**, even though SwiftUI is normally **one-way (top → down)**.  
+
+**Why Needed?**  
+
+- SwiftUI does not allow direct child → parent communication.
+- Preference keys solve this problem.
+
+**Used for**  
+- Reading child view size in parent
+- Sticky headers
+- Custom navigation bars
+- Passing scroll offsets
+- Floating buttons
+- Tooltips / popovers
+
+**🔥 Real-Time Example: Read the height of a child view**  
+
+- Imagine you have a view whose height depends on dynamic text.
+- You want the parent to adjust layout based on child’s height.
+
+**Step 1: Create PreferenceKey**  
+
+~~~swift
+struct HeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+~~~
+
 ## Question 1: What are all the ways to pass data between UIKit and SwiftUI?  
 
  **UIKit → SwiftUI**  
