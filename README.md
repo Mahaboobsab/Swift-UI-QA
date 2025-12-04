@@ -1,6 +1,19 @@
 # Swift UI - QA  
 Consist important interview Questions &amp; Answer's 
 
+## Question 1: 🚀 What is BGTaskScheduler?  
+
+**BGTaskScheduler (iOS 13+) allows your app to run background tasks even when the app is not in the foreground.**
+
+- BGTaskScheduler allows iOS to run your code in the background at optimal times.
+- You register a task, schedule it, and handle the work when iOS wakes your app.
+- BGAppRefreshTask → small, frequent, network updates
+- BGProcessingTask → heavy background tasks (sync, ML, upload)
+- System decides timing based on battery, power, user habits
+- Must reschedule a new task inside the handler  
+
+**BGTaskScheduler runs your code in background when the system allows, while URLSession background tasks let iOS perform long uploads/downloads even if your app is killed.**
+
 ## Question 1: What is the difference between .task {} and .onAppear {}?  
 <img width="741" height="305" alt="Screenshot 2025-12-02 at 11 03 14 PM" src="https://github.com/user-attachments/assets/af9f9fcb-564e-4c3a-8a9f-a2b98f4953d4" />
 
