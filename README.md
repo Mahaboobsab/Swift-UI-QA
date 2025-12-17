@@ -560,6 +560,69 @@ Use a DetachedTask when:
 - You want an independent background task not tied to the caller
 - Fire-and-forget work (logging, analytics, caching)
 
+**1️⃣ async let (Structured Concurrency)**  
+
+**What it is**  
+
+async let starts child tasks concurrently inside the same scope.  
+
+Example  
+~~~swift
+func loadData() async {
+    async let user = fetchUser()
+    async let posts = fetchPosts()
+
+    let (u, p) = await (user, posts)
+    print(u, p)
+}
+~~~
+**Key points**  
+
+- Tasks start immediately
+- Automatically cancelled if parent task is cancelled
+- Results must be awaited
+
+**Best when:**  
+
+- Fixed number of tasks
+- All results are required
+
+**✅ Recommended for most SwiftUI cases**  
+
+**2️⃣ Task {} (Unstructured Concurrency)**  
+
+**What it is**  
+
+Creates a detached concurrent task.  
+
+Example (SwiftUI)  
+~~~swift
+Button("Load") {
+    Task {
+        let user = await fetchUser()
+        let posts = await fetchPosts()
+    }
+}
+~~~
+
+Concurrent version  
+~~~swift
+Task {
+    async let user = fetchUser()
+    async let posts = fetchPosts()
+    _ = await (user, posts)
+}
+~~~
+**Key points**  
+
+- Not tied to a function scope
+- Must manage cancellation manually
+**Useful for:**
+
+- UI actions
+- Fire-and-forget tasks
+⚠️ Be careful with memory leaks & cancellation
+
 
 ## Question 4: ✅ What is a view identifier in SwiftUI?  
 A view identifier is a unique value that SwiftUI uses to distinguish one view from another when rendering dynamic content. It helps SwiftUI’s diffing algorithm determine which views have changed, which can be reused, and which need to be recreated during state updates.  
